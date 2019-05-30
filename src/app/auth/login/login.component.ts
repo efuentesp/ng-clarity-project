@@ -8,9 +8,11 @@ import { Component, OnInit } from "@angular/core";
 export class LoginComponent implements OnInit {
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log("OnInit() LoginComponent");
+  }
 
   onSubmit() {
-    console.log("onSubmit() LoginComponent");
+    alert("onSubmit() LoginComponent");
   }
 }
