@@ -6,15 +6,17 @@ import { AppComponent } from "./app.component";
 import { ClarityModule } from "@clr/angular";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { LoginComponent } from "./auth/login/login.component";
-import { LandPageComponent } from "./pages/land-page/land-page.component";
+import { LandingPageComponent } from "./pages/landing-page/landing-page.component";
 import { PageNotFoundComponent } from "./pages/page-not-found/page-not-found.component";
 import { HomeComponent } from "./modules/home/home.component";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { AuthGuard } from "./auth/_guards/auth.guard";
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    LandPageComponent,
+    LandingPageComponent,
     HomeComponent,
     PageNotFoundComponent
   ],
@@ -22,9 +24,11 @@ import { HomeComponent } from "./modules/home/home.component";
     BrowserModule,
     AppRoutingModule,
     ClarityModule,
+    FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
