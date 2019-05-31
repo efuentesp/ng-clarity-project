@@ -11,6 +11,8 @@ import { PageNotFoundComponent } from "./pages/page-not-found/page-not-found.com
 import { HomeComponent } from "./modules/home/home.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AuthGuard } from "./auth/_guards/auth.guard";
+import { AuthenticationService } from "./auth/_services/authentication.service";
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -26,9 +28,10 @@ import { AuthGuard } from "./auth/_guards/auth.guard";
     ClarityModule,
     FormsModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
-  providers: [AuthGuard],
+  providers: [AuthGuard, AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

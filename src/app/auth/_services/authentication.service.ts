@@ -8,10 +8,6 @@ import { Permission } from "../_models/permission";
 
 @Injectable()
 export class AuthenticationService {
-  // private username: string;
-  // private firstname: string;
-  // private lastname: string;
-  // private display_name: string;
   public user: User;
   public permissions: Permission[] = [];
 

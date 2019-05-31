@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { AuthenticationService } from "../_services/authentication.service";
+import { first } from "rxjs/operators";
 
 @Component({
   selector: "app-login",
@@ -11,7 +13,10 @@ export class LoginComponent implements OnInit {
   isSubmitted = false;
   isLoading = false;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private authenticationService: AuthenticationService
+  ) {}
 
   ngOnInit() {
     console.log("OnInit() LoginComponent");
@@ -37,5 +42,19 @@ export class LoginComponent implements OnInit {
     }
 
     this.isLoading = true;
+
+    this.authenticationService
+      .login(this.f.email.value, this.f.password.value)
+      .pipe(first())
+      .subscribe(
+        data => {
+          console.log('this.router.navigate(["admin"])', data);
+          //this.router.navigate(["admin"]);
+        },
+        error => {
+          alert("No responde el servidor.");
+          //this.alertService.error(error);
+        }
+      );
   }
 }
